@@ -1,0 +1,17 @@
+{
+  "parser"  : "babel-eslint",
+  "extends" : [
+    "airbnb"
+  ],
+  "plugins" : [
+  ],
+  "env"     : {
+    "browser" : true
+  },
+  "globals" : {
+  },
+  "rules": {
+    "semi" : [2, "never"],
+    "max-len": [2, 1200, 2]
+  }
+}
