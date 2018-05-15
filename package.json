@@ -1,7 +1,7 @@
 {
   "name": "lb-components",
   "version": "0.0.1",
-  "description": "components for lb project",
+  "description": "components for lb projects",
   "main": "index.js",
   "scripts": {
     "build": "rm -rf lib; babel components --out-dir lib --extensions .js,.jsx --copy-files",

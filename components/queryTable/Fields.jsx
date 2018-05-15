@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Form from 'lbc-wrapper/lib/form'
+import Form, { SimpleFormItem } from 'lbc-wrapper/lib/form'
 import Row from 'lbc-wrapper/lib/row'
 import Col from 'lbc-wrapper/lib/col'
 import Icon from 'lbc-wrapper/lib/icon'
@@ -26,10 +26,8 @@ class Fields extends Component {
     super(props)
 
     this.state = {
-      data: Map({
-        collapsed: true,
-        loading: false,
-      }),
+      collapsed: true,
+      loading: false,
     }
 
     this.renderButtons = this.renderButtons.bind(this)
@@ -60,7 +58,7 @@ class Fields extends Component {
 
   query() {
     const { query, form, fields } = this.props
-    const collapsed = this.state.data.get('collapsed')
+    const collapsed = this.state.collapsed
 
     const fieldIDs = (collapsed ? fields[0] : [...this.props.fields[0], ...this.props.fields[1]]).map(f => f.id)
     form.validateFields(fieldIDs, {}, (errors, values) => {
@@ -68,9 +66,9 @@ class Fields extends Component {
         return
       }
 
-      this.setState(({ data }) => ({
-        data: data.update('loading', () => true),
-      }))
+      this.setState({
+        loading: true,
+      })
 
       const toBeSent = {}
       fieldIDs.forEach((f) => {
@@ -80,20 +78,20 @@ class Fields extends Component {
       const retPromise = query(toBeSent)
 
       if (!retPromise) {
-        this.setState(({ data }) => ({
-          data: data.update('loading', () => false),
-        }))
+        this.setState({
+          loading: false,
+        })
         return
       }
 
       retPromise.then((res) => {
-        this.setState(({ data }) => ({
-          data: data.update('loading', () => false),
-        }))
+        this.setState({
+          loading: false,
+        })
       }).catch((e) => {
-        this.setState(({ data }) => ({
-          data: data.update('loading', () => false),
-        }))
+        this.setState({
+          loading: false,
+        })
       })
     })
   }
@@ -103,14 +101,14 @@ class Fields extends Component {
   }
 
   toggleForm() {
-    this.setState(({ data }) => ({
-      data: data.update('collapsed', c => !c),
-    }))
+    this.setState({
+      collapsed: !this.state.collapsed,
+    })
   }
 
   renderButtons() {
     const { fields } = this.props
-    const collapsed = this.state.data.get('collapsed')
+    const collapsed = this.state.collapsed
     const noCollapse = fields.length === 1 || fields[1].length === 1
     const fieldsNum = collapsed ? fields[0].length : (fields[0].length + (fields[1] ? fields[1].length : 0))
     const allLine = fieldsNum % COLUMNS === 0 // 独占一行
@@ -126,7 +124,7 @@ class Fields extends Component {
     const buttons = (
       <div className="lb-query-table-buttons">
         <span style={allLine ? { display: 'block', float: 'right' } : {}}>
-          <Button type="primary" htmlType="submit" onClick={this.query} loading={this.state.data.get('loading')}>
+          <Button type="primary" htmlType="submit" onClick={this.query} loading={this.state.loading}>
             查询
           </Button>
           <Button style={{ marginLeft: 8 }} onClick={this.reset}>
@@ -151,7 +149,7 @@ class Fields extends Component {
   }
 
   renderFormItems() {
-    const fields = this.state.data.get('collapsed') ? this.props.fields[0] : [...this.props.fields[0], ...this.props.fields[1]]
+    const fields = this.state.collapsed ? this.props.fields[0] : [...this.props.fields[0], ...this.props.fields[1]]
 
     return fields.map(f => (
       <Col {...(f.colSpan || colSpan)} key={f.id}>
@@ -167,7 +165,7 @@ class Fields extends Component {
     const item = this.renderFormItemByType(field)
 
     return (
-      <Form.Item
+      <SimpleFormItem
         label={field.label}
         required={field.required}
 
@@ -181,7 +179,7 @@ class Fields extends Component {
             ],
           })(item)
         }
-      </Form.Item>
+      </SimpleFormItem>
 
     )
   }
@@ -200,11 +198,7 @@ class Fields extends Component {
 
   renderFormItemSelect(field) {
     const select = (
-      <Select allowClear={!field.required} dropdownMatchSelectWidth={false} style={{ width: '100%' }}>
-        {
-          field.options.map((op, opKey) => <Option key={opKey} value={op.value}>{op.label}</Option>)
-        }
-      </Select>
+      <Select allowClear={!field.required} dropdownMatchSelectWidth={false} style={{ width: '100%' }} options={field.options} />
     )
 
     return select
