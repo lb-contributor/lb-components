@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Input, Icon } from 'antd'
-import './EditableCell.scss'
+import './style'
 
 class EditableCell extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {

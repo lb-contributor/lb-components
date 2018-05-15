@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Form, Row, Col, Icon, Button } from 'antd'
-import Immutable from 'immutable'
-import Input from '../input/InputWrapper'
-import Select, { Option } from '../select/SelectWrapper'
-import './Fields.scss'
+import Form from 'lbc-wrapper/lib/form'
+import Row from 'lbc-wrapper/lib/row'
+import Col from 'lbc-wrapper/lib/col'
+import Icon from 'lbc-wrapper/lib/icon'
+import Button from 'lbc-wrapper/lib/button'
+import Input from 'lbc-wrapper/lib/input'
+import Select from 'lbc-wrapper/lib/select'
+import './style'
 
-const { Map, is } = Immutable
 const COLUMNS = 3
 
 const colSpan = {

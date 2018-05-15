@@ -1,0 +1,40 @@
+.lo-status-dot {
+  width: 6px;
+  height: 6px;
+  display: inline-block;
+  border-radius: 50%;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+
+.lo-status-dot-success {
+  background-color: #52c41a;
+}
+
+.lo-status-dot-processing {
+  background-color: #1890ff;
+  position: relative;
+
+  @keyframes antStatusProcessing {
+    0%   { opacity: 1; transform: scale(0,0);}
+    100% { opacity: 0; transform: scale(3,3);}
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid #1890ff;
+    content: "";
+    -webkit-animation: antStatusProcessing 1.2s infinite ease-in-out;
+    animation: antStatusProcessing 1.2s infinite ease-in-out;
+  }
+}
+
+.lo-status-dot-error {
+  background-color: #f5222d;
+}

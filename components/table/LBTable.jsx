@@ -1,15 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Table } from 'antd'
-import Immutable from 'immutable'
-
-const { List, is } = Immutable
-
-function isImmutable(obj) {
-  if (!obj) return false
-
-  return obj.toJS
-}
+import Table from 'lbc-wrapper/lib/table'
 
 class LBTable extends Component {
   constructor(props) {
@@ -19,7 +10,7 @@ class LBTable extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return (isImmutable(nextProps.data) ? !is(this.props.data, nextProps.data) : this.props.data !== nextProps.data) ||
+    return this.props.data !== nextProps.data ||
       this.props.selectedRowKeys !== nextProps.selectedRowKeys
   }
 
@@ -32,7 +23,7 @@ class LBTable extends Component {
         size="small"
         rowSelection={this.rowSelection}
         columns={columns}
-        dataSource={isImmutable(data) ? data.toJS() : data}
+        dataSource={data}
         {...props}
       />
     )
@@ -41,7 +32,7 @@ class LBTable extends Component {
 
 LBTable.propTypes = {
   columns: PropTypes.array.isRequired,
-  data: PropTypes.oneOfType(PropTypes.array, PropTypes.instanceOf(List)),
+  data: PropTypes.oneOfType(PropTypes.array),
   rowSelection: PropTypes.oneOf([null, 'checkbox', 'radio']),
   selectedRowChange: PropTypes.func,
   selectedRowKeys: PropTypes.array,

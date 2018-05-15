@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Button } from 'antd'
 import { shallowCompareArr } from '../utils/compare'
-import './Actions.scss'
+import './style'
 import ActionButton from './ActionButton'
 
 class Actions extends Component {
@@ -13,7 +12,6 @@ class Actions extends Component {
 
   renderButton(butt) {
     const { selectedRowKeys, selectedRows } = this.props
-
   }
 
   render() {

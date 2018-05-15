@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Button, Popconfirm } from 'antd'
+import Button from 'lbc-wrapper/lib/button'
+import Popconfirm from 'lbc-wrapper/lib/popconfirm'
 
 class ActionButton extends Component {
   shouldComponentUpdate(nextProps) {
