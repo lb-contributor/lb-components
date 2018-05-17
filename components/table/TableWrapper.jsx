@@ -23,11 +23,11 @@ class TableWrapper extends Component {
 
   render() {
     console.log('----render TableWrapper----')
-    const { actions, ...props } = this.props
+    const { actions, position, ...props } = this.props
     const { selectedRowKeys, selectedRows } = this.state
     return (
       <div>
-        <Actions actions={actions} selectedRowKeys={selectedRowKeys} selectedRows={selectedRows} selectedRowChange={this.selectedRowChange} />
+        <Actions actions={actions} selectedRowKeys={selectedRowKeys} selectedRows={selectedRows} selectedRowChange={this.selectedRowChange} position={position} />
         <LBTable {...props} selectedRowKeys={selectedRowKeys} selectedRowChange={this.selectedRowChange} />
       </div>
     )

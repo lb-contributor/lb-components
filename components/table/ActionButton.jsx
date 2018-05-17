@@ -22,8 +22,8 @@ class ActionButton extends Component {
     if (disableFunc) {
       disabled = disableFunc(selectedRowKeys, selectedRows, selectedRowChange)
     } else {
-      disabled = minSelect !== 0 && selectedRowKeys.length > minSelect
-      disabled = maxSelect !== 0 && selectedRowKeys.length < maxSelect
+      disabled = minSelect !== 0 && selectedRowKeys.length < minSelect
+      disabled = disabled || (maxSelect !== 0 && selectedRowKeys.length > maxSelect)
     }
 
     const act = () => action(selectedRowKeys, selectedRows)

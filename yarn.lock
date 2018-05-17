@@ -2080,14 +2080,6 @@ kind-of@^6.0.0:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
 
-lbc-wrapper@^0.0.17:
-  version "0.0.17"
-  resolved "https://registry.yarnpkg.com/lbc-wrapper/-/lbc-wrapper-0.0.17.tgz#8b0562de17d308b645997a7117d6fa990606fe64"
-  dependencies:
-    antd "^3.4.1"
-    prop-types "^15.6.1"
-    react "^16.3.2"
-
 levn@^0.3.0, levn@~0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/levn/-/levn-0.3.0.tgz#3b09924edf9f083c0490fdd4c0bc4421e04764ee"
