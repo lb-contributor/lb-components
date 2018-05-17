@@ -32,7 +32,7 @@ class LBTable extends Component {
 
 LBTable.propTypes = {
   columns: PropTypes.array.isRequired,
-  data: PropTypes.oneOfType(PropTypes.array),
+  data: PropTypes.array,
   rowSelection: PropTypes.oneOf([null, 'checkbox', 'radio']),
   selectedRowChange: PropTypes.func,
   selectedRowKeys: PropTypes.array,

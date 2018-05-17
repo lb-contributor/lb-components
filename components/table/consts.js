@@ -1,10 +1,31 @@
 const ACTIONS = {
-  ADD: { label: '新增', icon: 'plus' },
-  MODIFY: {
-    label: '修改', minSelect: 1, maxSelect: 1, icon: '',
+  ADD: {
+    label: '新增',
+    icon: 'plus',
+    key: 'add',
   },
-  REMOVE: { label: '删除', minSelect: 1, icon: 'close' },
-  VIEW_DETAIL: { label: '查看详情', minSelect: 1, maxSelect: 1 },
+  MODIFY: {
+    label: '修改',
+    minSelect: 1,
+    maxSelect: 1,
+    icon: 'edit',
+    key: 'modify',
+  },
+  REMOVE: {
+    label: '删除',
+    minSelect: 1,
+    icon: 'close',
+    confirm: true,
+    message: '确认要删除这些记录？',
+    key: 'remove',
+  },
+  VIEW_DETAIL: {
+    label: '查看',
+    minSelect: 1,
+    maxSelect: 1,
+    icon: 'info-circle-o',
+    key: 'view',
+  },
 }
 
 export default ACTIONS
