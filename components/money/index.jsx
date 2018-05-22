@@ -10,7 +10,7 @@ class Money extends Component {
   render() {
     return (
       <InputNumber
-        formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+        formatter={value => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
         parser={value => value.replace(/\$\s?|(,*)/g, '')}
         {...this.props}
       />
