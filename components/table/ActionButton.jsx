@@ -6,7 +6,7 @@ import Popconfirm from 'lbc-wrapper/lib/popconfirm'
 class ActionButton extends Component {
   shouldComponentUpdate(nextProps) {
     return this.props.label !== nextProps.label ||
-      this.props.key !== nextProps.key ||
+      this.props.butKey !== nextProps.butKey ||
       // if minSelect and maxSelect is 0, that means this button does not care what row is selected.
       (nextProps.minSelect === 0 && nextProps.maxSelect === 0 ? false : this.props.selectedRowKeys !== nextProps.selectedRowKeys)
   }
@@ -52,6 +52,7 @@ class ActionButton extends Component {
 
 ActionButton.propTypes = {
   label: PropTypes.string.isRequired,
+  butKey: PropTypes.string.isRequired,
   icon: PropTypes.string,
   isPrimary: PropTypes.bool,
   action: PropTypes.func,

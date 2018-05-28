@@ -30,6 +30,7 @@ class Actions extends Component {
                 isPrimary={i === 0}
                 {...b}
                 key={b.key}
+                butKey={b.key}
                 selectedRows={selectedRows}
                 selectedRowKeys={selectedRowKeys}
                 selectedRowChange={selectedRowChange}
