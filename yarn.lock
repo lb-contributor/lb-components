@@ -2080,6 +2080,10 @@ kind-of@^6.0.0:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
 
+lb-debug@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/lb-debug/-/lb-debug-0.0.2.tgz#b47f3391d22059b7c0d2d4c28506c156d957f7f7"
+
 levn@^0.3.0, levn@~0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/levn/-/levn-0.3.0.tgz#3b09924edf9f083c0490fdd4c0bc4421e04764ee"

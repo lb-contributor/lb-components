@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import _debug from 'lb-debug'
 import LBTable from './LBTable'
 import Actions from './Actions'
+
+const debug = _debug('lb-components:TableWrapper')
 
 class TableWrapper extends Component {
   constructor(props) {
@@ -22,7 +25,7 @@ class TableWrapper extends Component {
   }
 
   render() {
-    console.log('----render TableWrapper----')
+    debug('render')
     const { actions, position, ...props } = this.props
     const { selectedRowKeys, selectedRows } = this.state
     return (

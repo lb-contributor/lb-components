@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Button from 'lbc-wrapper/lib/button'
 import Popconfirm from 'lbc-wrapper/lib/popconfirm'
+import _debug from 'lb-debug'
+
+const debug = _debug('lb-components:ActionButton')
 
 class ActionButton extends Component {
   shouldComponentUpdate(nextProps) {
@@ -12,7 +15,7 @@ class ActionButton extends Component {
   }
 
   render() {
-    console.log('----render ActionButton----')
+    debug('render')
     const {
       label, icon, isPrimary, action, minSelect,
       maxSelect, selectedRowKeys, selectedRows, disableFunc, confirm, message,

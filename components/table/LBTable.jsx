@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import _debug from 'lb-debug'
 import Table from 'lbc-wrapper/lib/table'
+
+const debug = _debug('lb-components:LBTable')
 
 class LBTable extends Component {
   constructor(props) {
@@ -15,7 +18,7 @@ class LBTable extends Component {
   }
 
   render() {
-    console.log('----render LBTables-----')
+    debug('render')
     const { columns, data, rowSelection, ...props } = this.props
     return (
       <Table

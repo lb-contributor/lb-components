@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import _debug from 'lb-debug'
 import { shallowCompareArr } from '../utils/compare'
 import './style'
 import ActionButton from './ActionButton'
+
+const debug = _debug('lb-components:Actions')
 
 class Actions extends Component {
   shouldComponentUpdate(nextProps) {
@@ -15,7 +18,7 @@ class Actions extends Component {
   }
 
   render() {
-    console.log('----render Actions----')
+    debug('render')
     const { actions, position, selectedRowKeys, selectedRows, selectedRowChange } = this.props
     if (!actions || actions.length === 0) {
       return null
