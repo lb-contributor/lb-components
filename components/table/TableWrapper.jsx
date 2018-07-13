@@ -10,6 +10,7 @@ class TableWrapper extends Component {
     super(props)
 
     this.selectedRowChange = this.selectedRowChange.bind(this)
+    this.clearSelections = this.clearSelections.bind(this)
 
     this.state = {
       selectedRowKeys: [],
@@ -21,6 +22,13 @@ class TableWrapper extends Component {
     this.setState({
       selectedRowKeys: [...selectedRowKeys],
       selectedRows: [...selectedRows],
+    })
+  }
+
+  clearSelections() {
+    this.setState({
+      selectedRowKeys: [],
+      selectedRows: [],
     })
   }
 
