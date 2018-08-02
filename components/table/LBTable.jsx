@@ -19,12 +19,12 @@ class LBTable extends Component {
 
   render() {
     debug('render')
-    const { columns, data, rowSelection, ...props } = this.props
+    const { columns, data, rowSelection, selectedRowKeys, ...props } = this.props
     return (
       <Table
         bordered
         size="small"
-        rowSelection={this.rowSelection}
+        rowSelection={Object.assign({}, this.rowSelection, { selectedRowKeys })}
         columns={columns}
         dataSource={data}
         {...props}
