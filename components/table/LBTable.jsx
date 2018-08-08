@@ -24,7 +24,7 @@ class LBTable extends Component {
       <Table
         bordered
         size="small"
-        rowSelection={Object.assign({}, this.rowSelection, { selectedRowKeys })}
+        rowSelection={this.rowSelection ? Object.assign({}, this.rowSelection, { selectedRowKeys }) : this.rowSelection}
         columns={columns}
         dataSource={data}
         {...props}
