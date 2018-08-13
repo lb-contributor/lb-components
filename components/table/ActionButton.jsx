@@ -31,7 +31,7 @@ class ActionButton extends Component {
 
     const act = () => action(selectedRowKeys, selectedRows)
     return confirm ? (
-      <Popconfirm title={message} onConfirm={act}>
+      <Popconfirm title={message} onConfirm={act} okText="确定" cancelText="取消">
         <Button
           type={isPrimary ? 'primary' : ''}
           disabled={disabled}
