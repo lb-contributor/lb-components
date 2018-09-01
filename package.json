@@ -1,6 +1,6 @@
 {
   "name": "lb-components",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "components for lb projects",
   "main": "index.js",
   "files": [
