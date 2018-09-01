@@ -42,7 +42,7 @@ class ActionButton extends Component {
       </Popconfirm>
     ) : (
       <Button
-        type={isPrimary ? 'primary' : ''}
+        type={type}
         onClick={act}
         disabled={disabled}
         icon={icon}
