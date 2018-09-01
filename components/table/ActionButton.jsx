@@ -17,9 +17,9 @@ class ActionButton extends Component {
   render() {
     debug('render')
     const {
-      label, icon, isPrimary, action, minSelect,
+      label, icon, action, minSelect,
       maxSelect, selectedRowKeys, selectedRows, disableFunc, confirm, message,
-      selectedRowChange
+      selectedRowChange, type
     } = this.props
     let disabled = false
     if (disableFunc) {
@@ -33,7 +33,7 @@ class ActionButton extends Component {
     return confirm ? (
       <Popconfirm title={message} onConfirm={act} okText="确定" cancelText="取消">
         <Button
-          type={isPrimary ? 'primary' : ''}
+          type={type}
           disabled={disabled}
           icon={icon}
         >
@@ -57,7 +57,7 @@ ActionButton.propTypes = {
   label: PropTypes.string.isRequired,
   butKey: PropTypes.string.isRequired,
   icon: PropTypes.string,
-  isPrimary: PropTypes.bool,
+  type: PropTypes.string,
   action: PropTypes.func,
   minSelect: PropTypes.number,
   maxSelect: PropTypes.number,

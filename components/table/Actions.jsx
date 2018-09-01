@@ -30,7 +30,7 @@ class Actions extends Component {
           {
             actions.map((b, i) => (
               <ActionButton
-                isPrimary={i === 0}
+                type={b.type}
                 {...b}
                 key={b.key}
                 butKey={b.key}
