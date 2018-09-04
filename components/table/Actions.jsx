@@ -8,10 +8,10 @@ import ActionButton from './ActionButton'
 const debug = _debug('lb-components:Actions')
 
 class Actions extends Component {
-  shouldComponentUpdate(nextProps) {
-    return !shallowCompareArr(this.props.actions, nextProps.actions) ||
-      this.props.selectedRowKeys !== nextProps.selectedRowKeys
-  }
+  // shouldComponentUpdate(nextProps) {
+  //   return !shallowCompareArr(this.props.actions, nextProps.actions) ||
+  //     this.props.selectedRowKeys !== nextProps.selectedRowKeys
+  // }
 
   renderButton(butt) {
     const { selectedRowKeys, selectedRows } = this.props

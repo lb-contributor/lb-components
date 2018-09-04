@@ -7,12 +7,12 @@ import _debug from 'lb-debug'
 const debug = _debug('lb-components:ActionButton')
 
 class ActionButton extends Component {
-  shouldComponentUpdate(nextProps) {
-    return this.props.label !== nextProps.label ||
-      this.props.butKey !== nextProps.butKey ||
-      // if minSelect and maxSelect is 0, that means this button does not care what row is selected.
-      (nextProps.minSelect === 0 && nextProps.maxSelect === 0 ? false : this.props.selectedRowKeys !== nextProps.selectedRowKeys)
-  }
+  // shouldComponentUpdate(nextProps) {
+  //   return this.props.label !== nextProps.label ||
+  //     this.props.butKey !== nextProps.butKey ||
+  //     // if minSelect and maxSelect is 0, that means this button does not care what row is selected.
+  //     (nextProps.minSelect === 0 && nextProps.maxSelect === 0 ? false : this.props.selectedRowKeys !== nextProps.selectedRowKeys)
+  // }
 
   render() {
     debug('render')
