@@ -13,7 +13,8 @@ class LBTable extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.props.data !== nextProps.data ||
+    // if forceRender, will not compare props
+    return nextProps.forceRender || this.props.data !== nextProps.data ||
       this.props.selectedRowKeys !== nextProps.selectedRowKeys
   }
 
