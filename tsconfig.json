@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "noImplicitAny": true,
+    "target": "es5",
+    "declaration": true,
+    "lib": [
+      "dom",
+      "es7"
+    ],
+    "module": "commonJS",
+    "outDir": "lib",
+  },
+  "include": [
+    "components/table/**/*"
+  ],, "../lb-componen, "../lb-component-wrapper/components/layout/sider.tsx", "../lb-component-wrapper/components/input/group.tsx"t-wrapper/components/collapse/collapse-panel.tsx"
+  "exclude": [
+    "node_modules",
+    "lib"
+  ]
+}
