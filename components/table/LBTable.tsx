@@ -41,7 +41,7 @@ class LBTable<T> extends React.Component<LBTableProps<T>, any> {
   render() {
     const { columns, data, rowSelection, selectedRowKeys, ...props } = this.props
     return (
-      <Table
+      <Table<T>
         bordered
         size="small"
         rowSelection={this.rowSelection ? Object.assign({}, this.rowSelection, { selectedRowKeys }) : this.rowSelection}

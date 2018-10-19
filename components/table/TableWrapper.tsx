@@ -8,12 +8,12 @@ export interface TableWrapperProps<T> extends LBTableProps<T> {
   position: string;
 }
 
-export interface TableWrapperState {
+export interface TableWrapperState<T> {
   selectedRowKeys: any[];
-  selectedRows: object[];
+  selectedRows: T[];
 }
 
-class TableWrapper<T> extends React.Component<TableWrapperProps<T>, TableWrapperState> {
+class TableWrapper<T> extends React.Component<TableWrapperProps<T>, TableWrapperState<T>> {
   constructor(props: TableWrapperProps<T>) {
     super(props)
 
@@ -26,7 +26,7 @@ class TableWrapper<T> extends React.Component<TableWrapperProps<T>, TableWrapper
     }
   }
 
-  selectedRowChange(selectedRowKeys: any[], selectedRows: object[]): void {
+  selectedRowChange(selectedRowKeys: any[], selectedRows: T[]): void {
     this.setState({
       selectedRowKeys: [...selectedRowKeys],
       selectedRows: [...selectedRows],
@@ -46,7 +46,7 @@ class TableWrapper<T> extends React.Component<TableWrapperProps<T>, TableWrapper
     return (
       <div>
         <Actions actions={actions} selectedRowKeys={selectedRowKeys} selectedRows={selectedRows} selectedRowChange={this.selectedRowChange} position={position} />
-        <LBTable {...props} selectedRowKeys={selectedRowKeys} selectedRowChange={this.selectedRowChange} />
+        <LBTable<T> {...props} selectedRowKeys={selectedRowKeys} selectedRowChange={this.selectedRowChange} />
       </div>
     )
   }

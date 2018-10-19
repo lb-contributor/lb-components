@@ -18,7 +18,7 @@
   },
   "include": [
     "components/table/**/*"
-  ],, "../lb-componen, "../lb-component-wrapper/components/layout/sider.tsx", "../lb-component-wrapper/components/input/group.tsx"t-wrapper/components/collapse/collapse-panel.tsx"
+  ],
   "exclude": [
     "node_modules",
     "lib"

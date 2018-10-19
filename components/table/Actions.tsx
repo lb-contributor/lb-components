@@ -6,9 +6,9 @@ import ActionButton, { ActionButtonItem } from './ActionButton'
 export interface ActionsProps {
   actions?: ActionButtonItem[];
   position: string;
-  selectedRowKeys?: object[];
-  selectedRows?: object[];
-  selectedRowChange?: (selectedRowKeys: any[], selectedRows: object[]) => void;
+  selectedRowKeys?: any[];
+  selectedRows?: any[];
+  selectedRowChange?: (selectedRowKeys: any[], selectedRows: any[]) => void;
 }
 
 class Actions extends React.Component<ActionsProps, {}> {
