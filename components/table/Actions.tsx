@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as PropTypes from 'prop-types'
-import './style'
+// import './style'
 import ActionButton, { ActionButtonItem } from './ActionButton'
 
 export interface ActionsProps {

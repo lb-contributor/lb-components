@@ -1,23 +1,28 @@
 import * as React from 'react'
-import LBTable, { LBTableProps } from './LBTable'
+import LBTable, { LBTableBaseProps } from './LBTable'
 import { ActionButtonItem } from './ActionButton'
 import Actions from './Actions'
+import { SelectedRows, SelectedRowKeys } from './tableDef'
 
-export interface TableWrapperProps<T> extends LBTableProps<T> {
-  actions: ActionButtonItem[];
+export interface TableWrapperProps<T> extends LBTableBaseProps<T> {
+  actions?: ActionButtonItem[];
   position: string;
 }
 
-export interface TableWrapperState<T> {
-  selectedRowKeys: any[];
-  selectedRows: T[];
+export interface TableWrapperState {
+  selectedRowKeys: SelectedRowKeys;
+  selectedRows: SelectedRows;
 }
 
-class TableWrapper<T> extends React.Component<TableWrapperProps<T>, TableWrapperState<T>> {
+class TableWrapper<T> extends React.Component<TableWrapperProps<T>, TableWrapperState> {
+  public static defaultProps = {
+    position: 'right'
+  }
+
   constructor(props: TableWrapperProps<T>) {
     super(props)
 
-    this.selectedRowChange = this.selectedRowChange.bind(this)
+    this.selectedRowChange1 = this.selectedRowChange1.bind(this)
     this.clearSelections = this.clearSelections.bind(this)
 
     this.state = {
@@ -26,14 +31,14 @@ class TableWrapper<T> extends React.Component<TableWrapperProps<T>, TableWrapper
     }
   }
 
-  selectedRowChange(selectedRowKeys: any[], selectedRows: T[]): void {
+  public selectedRowChange1(selectedRowKeys: SelectedRowKeys, selectedRows: SelectedRows): void {
     this.setState({
       selectedRowKeys: [...selectedRowKeys],
-      selectedRows: [...selectedRows],
+      selectedRows: selectedRows,
     })
   }
 
-  clearSelections(): void {
+  public clearSelections(): void {
     this.setState({
       selectedRowKeys: [],
       selectedRows: [],
@@ -41,12 +46,12 @@ class TableWrapper<T> extends React.Component<TableWrapperProps<T>, TableWrapper
   }
 
   render() {
-    const { actions, position, ...props } = this.props
+    const { actions, position, ...props } = this.props as TableWrapperProps<T>
     const { selectedRowKeys, selectedRows } = this.state
     return (
       <div>
-        <Actions actions={actions} selectedRowKeys={selectedRowKeys} selectedRows={selectedRows} selectedRowChange={this.selectedRowChange} position={position} />
-        <LBTable<T> {...props} selectedRowKeys={selectedRowKeys} selectedRowChange={this.selectedRowChange} />
+        <Actions actions={actions} selectedRowKeys={selectedRowKeys} selectedRows={selectedRows} selectedRowChange={this.selectedRowChange1} position={position} />
+        <LBTable<T> {...props} selectedRowKeys2={selectedRowKeys} selectedRowChange2={this.selectedRowChange1} />
       </div>
     )
   }

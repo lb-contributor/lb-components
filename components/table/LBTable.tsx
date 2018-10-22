@@ -1,13 +1,17 @@
 import * as React from 'react'
 import * as PropTypes from 'prop-types'
 import Table, { TableProps, TableRowSelection, RowSelectionType } from 'lbc-wrapper/lib/table'
+import { SelectedRows, SelectedRowKeys } from './tableDef'
 
-export interface LBTableProps<T> extends TableProps<T> {
-  selectedRowChange: (selectedRowKeys: string[] | number[], selectedRows: Object[]) => void;
-  selectedRowKeys: object[];
+export interface LBTableBaseProps<T> extends TableProps<T> {
   data?: T[];
   forceRender?: boolean;
   rowSelectionType?: RowSelectionType;
+}
+
+interface LBTableProps<T> extends LBTableBaseProps<T> {
+  selectedRowChange2: (selectedRowKeys: SelectedRowKeys, selectedRows: SelectedRows) => void;
+  selectedRowKeys2: SelectedRowKeys;
 }
 
 class LBTable<T> extends React.Component<LBTableProps<T>, any> {
@@ -29,22 +33,22 @@ class LBTable<T> extends React.Component<LBTableProps<T>, any> {
   constructor(props: LBTableProps<T>) {
     super(props)
 
-    this.rowSelection = props.rowSelectionType ? { type: props.rowSelectionType, onChange: this.props.selectedRowChange } : undefined
+    this.rowSelection = props.rowSelectionType ? { type: props.rowSelectionType, onChange: this.props.selectedRowChange2 } : undefined
   }
 
   shouldComponentUpdate(nextProps: LBTableProps<T>) {
     // if forceRender, will not compare props
     return nextProps.forceRender || this.props.data !== nextProps.data ||
-      this.props.selectedRowKeys !== nextProps.selectedRowKeys
+      this.props.selectedRowKeys2 !== nextProps.selectedRowKeys2
   }
 
   render() {
-    const { columns, data, rowSelection, selectedRowKeys, ...props } = this.props
+    const { columns, data, rowSelection, selectedRowKeys2, ...props } = this.props
     return (
       <Table<T>
         bordered
         size="small"
-        rowSelection={this.rowSelection ? Object.assign({}, this.rowSelection, { selectedRowKeys }) : this.rowSelection}
+        rowSelection={this.rowSelection ? Object.assign({}, this.rowSelection, { selectedRowKeys: selectedRowKeys2 }) : this.rowSelection}
         columns={columns}
         dataSource={data}
         {...props}

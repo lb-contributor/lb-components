@@ -1,12 +1,15 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { TableProps, TableRowSelection, RowSelectionType } from 'lbc-wrapper/lib/table';
-export interface LBTableProps<T> extends TableProps<T> {
-    selectedRowChange: (selectedRowKeys: string[] | number[], selectedRows: Object[]) => void;
-    selectedRowKeys: object[];
+import { SelectedRows, SelectedRowKeys } from './tableDef';
+export interface LBTableBaseProps<T> extends TableProps<T> {
     data?: T[];
     forceRender?: boolean;
     rowSelectionType?: RowSelectionType;
+}
+interface LBTableProps<T> extends LBTableBaseProps<T> {
+    selectedRowChange2: (selectedRowKeys: SelectedRowKeys, selectedRows: SelectedRows) => void;
+    selectedRowKeys2: SelectedRowKeys;
 }
 declare class LBTable<T> extends React.Component<LBTableProps<T>, any> {
     static propTypes: {
