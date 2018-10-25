@@ -1,11 +1,11 @@
 import * as React from 'react'
 import * as PropTypes from 'prop-types'
 import './style'
-import ActionButton, { ActionButtonItem } from './ActionButton'
+import ActionButton, { TableAction } from './ActionButton'
 
 export interface ActionsProps {
-  actions?: ActionButtonItem[];
-  position: string;
+  actions?: TableAction[];
+  position?: string;
   selectedRowKeys?: any[];
   selectedRows?: any[];
   selectedRowChange?: (selectedRowKeys: any[], selectedRows: any[]) => void;
@@ -23,7 +23,7 @@ class Actions extends React.Component<ActionsProps, {}> {
     selectedRowChange: PropTypes.func,
   }
 
-  defaultProps = {
+  static defaultProps = {
     position: 'left',
   }
 

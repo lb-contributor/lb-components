@@ -1,12 +1,12 @@
 import * as React from 'react'
 import LBTable, { LBTableBaseProps } from './LBTable'
-import { ActionButtonItem } from './ActionButton'
+import { TableAction } from './ActionButton'
 import Actions from './Actions'
 import { SelectedRows, SelectedRowKeys } from './tableDef'
 
-export interface TableWrapperProps<T> extends LBTableBaseProps<T> {
-  actions?: ActionButtonItem[];
-  position: string;
+export interface TableProps<T> extends LBTableBaseProps<T> {
+  actions?: TableAction[];
+  position?: string;
 }
 
 export interface TableWrapperState {
@@ -14,12 +14,8 @@ export interface TableWrapperState {
   selectedRows: SelectedRows;
 }
 
-class TableWrapper<T> extends React.Component<TableWrapperProps<T>, TableWrapperState> {
-  public static defaultProps = {
-    position: 'right'
-  }
-
-  constructor(props: TableWrapperProps<T>) {
+class TableWrapper<T> extends React.Component<TableProps<T>, TableWrapperState> {
+  constructor(props: TableProps<T>) {
     super(props)
 
     this.selectedRowChange1 = this.selectedRowChange1.bind(this)
@@ -46,7 +42,7 @@ class TableWrapper<T> extends React.Component<TableWrapperProps<T>, TableWrapper
   }
 
   render() {
-    const { actions, position, ...props } = this.props as TableWrapperProps<T>
+    const { actions, position, ...props } = this.props as TableProps<T>
     const { selectedRowKeys, selectedRows } = this.state
     return (
       <div>

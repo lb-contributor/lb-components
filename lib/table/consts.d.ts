@@ -1,6 +1,6 @@
-import { ActionButtonItem } from './ActionButton';
+import { TableAction } from './ActionButton';
 declare type ACTIONS_DEF = {
-    [index: string]: ActionButtonItem;
+    [index: string]: TableAction;
 };
 export declare const ACTIONS: ACTIONS_DEF;
 export {};

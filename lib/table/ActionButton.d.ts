@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { ButtonType } from 'lbc-wrapper/lib/button';
-export interface ActionButtonItem {
+export interface TableAction {
     key: string;
     label: string;
     icon?: string;
@@ -13,7 +13,7 @@ export interface ActionButtonItem {
     message?: string;
     type?: ButtonType;
 }
-export interface ActionButtonProps extends ActionButtonItem {
+export interface ActionButtonProps extends TableAction {
     selectedRowKeys?: any[];
     selectedRows?: object[];
     selectedRowChange?: (selectedRowKeys: any[], selectedRows: object[]) => void;

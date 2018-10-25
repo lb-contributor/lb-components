@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types'
 import Button, { ButtonType } from 'lbc-wrapper/lib/button'
 import Popconfirm from 'lbc-wrapper/lib/popconfirm'
 
-export interface ActionButtonItem {
+export interface TableAction {
   key: string;
   label: string;
   icon?: string;
@@ -17,7 +17,7 @@ export interface ActionButtonItem {
   type?: ButtonType;
 }
 
-export interface ActionButtonProps extends ActionButtonItem {
+export interface ActionButtonProps extends TableAction {
   selectedRowKeys?: any[];
   selectedRows?: object[];
   selectedRowChange?: (selectedRowKeys: any[], selectedRows: object[]) => void;
