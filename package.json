@@ -1,6 +1,6 @@
 {
   "name": "lb-components",
-  "version": "0.0.15",
+  "version": "1.0.0",
   "description": "components for lb projects",
   "main": "index.js",
   "files": [
@@ -26,7 +26,7 @@
   "dependencies": {
     "clipboard": "^2.0.0",
     "lb-debug": "^0.0.2",
-    "lbc-wrapper": "^1.0.8",
+    "lbc-wrapper": "^1.0.9",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "tslint": "^5.11.0",
