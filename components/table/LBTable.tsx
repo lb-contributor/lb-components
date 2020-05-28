@@ -7,6 +7,7 @@ export interface LBTableBaseProps<T> extends TableProps<T> {
   data?: T[];
   forceRender?: boolean;
   rowSelectionType?: RowSelectionType;
+  useExternalRowSelection?: boolean,
 }
 
 interface LBTableProps<T> extends LBTableBaseProps<T> {
@@ -21,11 +22,13 @@ class LBTable<T> extends React.Component<LBTableProps<T>, any> {
     rowSelectionType: PropTypes.oneOf([undefined, 'checkbox', 'radio']),
     selectedRowChange: PropTypes.func,
     selectedRowKeys: PropTypes.array,
+    useExternalRowSelection: PropTypes.bool
   }
 
   static defaultProps = {
     rowSelectionType: undefined,
     data: [],
+    useExternalRowSelection: false,
   }
 
   rowSelection: TableRowSelection<T> | undefined
@@ -43,12 +46,15 @@ class LBTable<T> extends React.Component<LBTableProps<T>, any> {
   }
 
   render() {
-    const { columns, data, rowSelection, selectedRowKeys2, ...props } = this.props
+    const { columns, data, rowSelection, selectedRowKeys2, useExternalRowSelection, ...props } = this.props
+
+    const rs = useExternalRowSelection ? rowSelection : (this.rowSelection ? Object.assign({}, this.rowSelection, { selectedRowKeys: selectedRowKeys2 }) : this.rowSelection)
+
     return (
       <Table<T>
         bordered
         size="small"
-        rowSelection={this.rowSelection ? Object.assign({}, this.rowSelection, { selectedRowKeys: selectedRowKeys2 }) : this.rowSelection}
+        rowSelection={rs}
         columns={columns}
         dataSource={data}
         {...props}
