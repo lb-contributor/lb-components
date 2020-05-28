@@ -9,7 +9,7 @@ export interface LBTableBaseProps<T> extends TableProps<T> {
     useExternalRowSelection?: boolean;
 }
 interface LBTableProps<T> extends LBTableBaseProps<T> {
-    selectedRowChange2: (selectedRowKeys: SelectedRowKeys, selectedRows: SelectedRows) => void;
+    selectedRowChange2: (selectedRowKeys: SelectedRowKeys, selectedRows: T[] | SelectedRows) => void;
     selectedRowKeys2: SelectedRowKeys;
 }
 declare class LBTable<T> extends React.Component<LBTableProps<T>, any> {

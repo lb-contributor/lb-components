@@ -11,7 +11,7 @@ export interface LBTableBaseProps<T> extends TableProps<T> {
 }
 
 interface LBTableProps<T> extends LBTableBaseProps<T> {
-  selectedRowChange2: (selectedRowKeys: SelectedRowKeys, selectedRows: SelectedRows) => void;
+  selectedRowChange2: (selectedRowKeys: SelectedRowKeys, selectedRows: T[]|SelectedRows) => void;
   selectedRowKeys2: SelectedRowKeys;
 }
 
